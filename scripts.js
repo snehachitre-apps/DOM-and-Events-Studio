@@ -6,13 +6,25 @@ function init() {
     let shuttleHeight= Number(document.getElementById("spaceShuttleHeight").innerHTML);
     const landButton= document.getElementById("landing");
     const abortButton= document.getElementById("missionAbort");
-    const down= document.getElementById("down");
+    const downB= document.getElementById("down");
+    const leftB= document.getElementById("left");
+    const rightB= document.getElementById("right");
+    const upB= document.getElementById("up");
     const rocketImg= document.getElementById("rocket");
-    rocketImg.style.left = '5px';
-    rocketImg.style.right = '35px';
-    rocketImg.style.bottom= '35px';
-    rocketImg.style.top = '250px';
-
+    
+    // let top=250;
+    // let bottom=10;
+    // let left=250;
+    // let right=250;
+    let top=250;
+    let bottom=0;
+    let left=250;
+    let right=250;
+    rocketImg.style.bottom =bottom+'px';
+    rocketImg.style.left =left+'px';
+    rocketImg.style.right =right+'px'; 
+    rocketImg.style.top =top+'px';
+  
     takeOffButton.addEventListener("click",function (event) {
 
         if(confirm("Confirm that the shuttle is ready for takeoff.")) {
@@ -20,6 +32,9 @@ function init() {
             document.getElementById("shuttleBackground").style.backgroundColor = 'blue';
             shuttleHeight += 10000;
             document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
+            top -=10;
+            
+            rocketImg.style.top =top+'px';
         }
     });
        
@@ -41,19 +56,98 @@ function init() {
             document.getElementById("shuttleBackground").style.backgroundColor = 'green';
             shuttleHeight = 0;
             document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
+
+            //back to original place.
+            let top=250;
+            let bottom=0;
+            let left=250;
+            let right=250;
+            rocketImg.style.bottom =bottom+'px';
+            rocketImg.style.left =left+'px';
+            rocketImg.style.right =right+'px'; 
+            rocketImg.style.top =top+'px';
+          
         }
     });
     
 
-    down.addEventListener("click", function(event){
-        let position= parseInt(rocketImg.style.bottom);
-        // flightStatus.innerHTML= position;  
-        position -=10 ;
+    downB.addEventListener("click", function(event){
+       
+            if(shuttleHeight==0){
+                document.getElementById("shuttleBackground").style.backgroundColor = 'green';
+                flightStatus.innerHTML= "Shuttle has landed.";   
+               
+                
+                document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
+           
+         }else{
+            //moving using left spacing
+            top+=10;
+            rocketImg.style.top =top+'px';
+            shuttleHeight-=10000;
+            // shuttleHeight -= 10000;
+            flightStatus.innerHTML= "Shuttle in flight."; 
+            document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
+         }
+
         
-        rocketImg.style.bottom = ;
+       
 
     });
 
+    upB.addEventListener("click", function(event){
+       
+        if(top==0){
+           
+            flightStatus.innerHTML= "Maximum shuttle height reached.";   
+           
+            
+            document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
+       
+     }else{
+        document.getElementById("shuttleBackground").style.backgroundColor = 'blue';
+        top-=10;
+        rocketImg.style.top =top+'px';
+        shuttleHeight+=10000;
+        flightStatus.innerHTML= "Shuttle in flight"; 
+        
+        document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
+     }
+
+
+});
+
+leftB.addEventListener("click", function(event){
+       
+    if(left==0){
+       
+        flightStatus.innerHTML= "Maximum left movement reached.";   
+       
+ }else{
+   
+    left-=10;
+    rocketImg.style.left =left+'px';
+    document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
+ }
+
+
+});
+
+rightB.addEventListener("click", function(event){
+       
+    if(left==550){
+       
+        flightStatus.innerHTML= "Maximum right movement reached.";   
+       
+ }else{
+   
+    left+=10;
+    rocketImg.style.left =left+'px';
+    document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
+ }
+
+
+});
 
 }
 
