@@ -46,6 +46,15 @@ function init() {
             document.getElementById("shuttleBackground").style.backgroundColor = 'green';
             shuttleHeight = 0;
             document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
+
+            let top=250;
+            let bottom=0;
+            let left=250;
+            let right=250;
+            rocketImg.style.bottom =bottom+'px';
+            rocketImg.style.left =left+'px';
+            rocketImg.style.right =right+'px'; 
+            rocketImg.style.top =top+'px';
         
     });
         
