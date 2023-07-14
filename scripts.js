@@ -47,14 +47,14 @@ function init() {
             shuttleHeight = 0;
             document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
 
-            let top=250;
-            let bottom=0;
-            let left=250;
-            let right=250;
+            top=250;
+            bottom=0;
+            left=250;
+            right=250;
             rocketImg.style.bottom =bottom+'px';
             rocketImg.style.left =left+'px';
             rocketImg.style.right =right+'px'; 
-            rocketImg.style.top =top+'px';
+            rocketImg.style.top =top+'px';git
         
     });
         
@@ -67,10 +67,10 @@ function init() {
             document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
 
             //back to original place.
-            let top=250;
-            let bottom=0;
-            let left=250;
-            let right=250;
+            top=250;
+            bottom=0;
+            left=250;
+            right=250;
             rocketImg.style.bottom =bottom+'px';
             rocketImg.style.left =left+'px';
             rocketImg.style.right =right+'px'; 
@@ -90,7 +90,7 @@ function init() {
                 document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
            
          }else{
-            //moving using left spacing
+            //moving using top spacing
             top+=10;
             rocketImg.style.top =top+'px';
             shuttleHeight-=10000;
@@ -121,6 +121,11 @@ function init() {
         flightStatus.innerHTML= "Shuttle in flight"; 
         
         document.getElementById("spaceShuttleHeight").innerHTML=shuttleHeight;
+
+        if(top==250)
+        {
+
+        }
      }
 
 
